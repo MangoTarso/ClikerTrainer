@@ -53,14 +53,21 @@ predicate = [
     "LET YOUR MIND WANDER ONLY ON"
 ]
 
-say = "\tSAY \"CLICKS MAKE PUPPY HORNY\""
+say = "\tSAY \"I'M A GOOD GOONER\""
 
 def PhrasePicker(chance):
     ra = rd.random()
 
     phrase = f"\t{rd.choice(actions)} AND {rd.choice(predicate)}{rd.choice(phrases)}"
 
-    if chance >= 0.75 and ra >= chance:
-        return rd.choice([phrase, say])
+    if chance >= 0.75:
+        return rd.choices([phrase, say], weights=[4,1], k=1)[0]
 
     return phrase
+
+if __name__ == "__main__":
+    s = 0
+    while s < 1:
+        print(PhrasePicker(s))
+        s += rd.random()
+    input()
