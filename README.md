@@ -7,9 +7,10 @@ Library dependencies are:
 - `inputimeout`
 - `pysinewave`
 - `math`
+- `copy`
 
 # Release
-Latest release is [here](https://github.com/MangoTarso/ClikerTrainer/releases/tag/v1.0)
+Latest release is [here](https://github.com/MangoTarso/ClikerTrainer/releases/tag/v1.1)
 
 # FAQ
 ## Can I change the sound played?
