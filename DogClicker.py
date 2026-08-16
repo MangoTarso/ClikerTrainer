@@ -4,6 +4,7 @@ import random as rn
 from inputimeout import inputimeout, TimeoutOccurred
 from BinauralGen import BinauralSine
 import Phraser as ph
+import copy
 
 clicker = dogClicker('dog-clicker.mp3')
 
@@ -59,9 +60,10 @@ while True:
 
     break
 
+OGMOD = (0.75)/((4*x)**2)
 begiTime = tm.time()
-modifier = 1/((4*x)**2)
-starter = 0.0
+modifier = copy.deepcopy(OGMOD)
+starter = 0.25
 
 print("\n\tREMEMBER: This script is meant to be left playing in the background, while you watch your \"content\"")
 tm.sleep(2)
@@ -93,7 +95,7 @@ while True:
         c = inputimeout(prompt=rn.choices(reminder, weights=[14, 1, 1], k=1)[0], timeout=15)
         break
     except TimeoutOccurred:
-        modifier += 2/((4*x)**2)
+        modifier += 2*OGMOD
         starter += modifier * randomChanger
         if sineCheck:
             binaural.randomChange()
