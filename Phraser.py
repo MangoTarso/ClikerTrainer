@@ -53,7 +53,7 @@ predicate = [
     "LET YOUR MIND WANDER ONLY ON"
 ]
 
-say = "\tSAY \"I'M A GOOD GOONER\""
+say = "\tSAY \"GOOD GOONERS STAY HORNY\""
 
 def PhrasePicker(chance):
     ra = rd.random()
