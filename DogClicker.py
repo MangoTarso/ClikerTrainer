@@ -12,8 +12,29 @@ print("THIS IS A DOG CLICKER TRAINER TO GET HORNY AT THE SOUND OF A CLICK\n")
 print("IT'S MEANT TO PLAY WHILE YOU WATCH SOMETHING ELSE\n")
 w = input("Are we ready?\n")
 
+while True:
+    clicks = input("How many times would you like the clicker to play? [int][default=1]: ")
+
+    if clicks == "":
+        break
+
+    if clicks.isnumeric():
+        clicks = int(clicks)
+    else:
+        print(f"\n\"{clicks}\" contains invalid characters.")
+        continue
+
+    if clicks < 1 or not isinstance(clicks, int):
+        print(f"\n\"{clicks}\" is not a valid amount of time.")
+        continue
+    else:
+        clicker.setTimes(clicks)
+        break
+
+print()
+
 if w != "":
-    print("At the sound of the three clicks, you must divert your attention entirely to how your body feels\n")
+    print("At the sound of the clicks, you must divert your attention entirely to how your body feels\n")
     tm.sleep(2)
     print("It sounds like this\n")
     tm.sleep(1)
@@ -46,7 +67,7 @@ print("\nREMEMBER: This is meant to sound on the background, while you fill your
 tm.sleep(2)
 
 while True:
-    x = input("\nHow long (minutes[int])?: ")
+    x = input("\nHow long will the session be? (minutes[int]): ")
 
     if x.isnumeric():
         x = int(x)
@@ -107,21 +128,23 @@ while True:
             print(10-t)
         break
 
+if badRollCheck:
+    word = "DENIED"
+    clicker.change("")
+    if sineCheck:
+        binaural.stopSine()
+        sineCheck = False
+else:
+    word = "CUM"
+
 while True:
     try:
-        if badRollCheck:
-            if sineCheck:
-                binaural.stopSine()
-                sineCheck = False
-            c = inputimeout(prompt='DENIED', timeout=0.5)
-        else:
-            c = inputimeout(prompt='CUM', timeout=0.5)
-            if sineCheck:
-                binaural.stopSine()
+        c = inputimeout(prompt=word, timeout=0.5)
+        if sineCheck:
+            binaural.stopSine()
         break
     except TimeoutOccurred:
-        if not badRollCheck:
-            clicker.play()
+        clicker.play()
 
 lasted = round(tm.time() - begiTime)
 secs = lasted % 60
